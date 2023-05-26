@@ -1,0 +1,88 @@
+@import '../../../assets/variables';
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: $white;
+  border-bottom: 1px solid $red;
+  overflow: hidden;
+  z-index: 100;
+
+  .container-fluid {
+    padding: 1rem 1.5rem;
+    margin: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a.logo {
+      img {
+        width: 10rem;
+      }
+    }
+
+    nav {
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          a {
+            transition: all 0.3s;
+            border-radius: 4px;
+            padding: 1rem 3rem;
+          }
+
+          a.login {
+            color: $gray;
+            border: 1px solid $red;
+            font-size: 18px;
+
+            i {
+              font-size: 14px;
+              margin-right: 0.5rem;
+            }
+          }
+
+          a.login:hover {
+            color: $white;
+            background-color: $red;
+          }
+
+          a.cart {
+            color: $gray;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            i {
+              font-size: 20px;
+            }
+
+            p {
+              margin: 0;
+
+              span {
+                display: block;
+                font-size: 10px;
+              }
+            }
+          }
+
+          a.cart:hover {
+            background-color: $light-gray;
+          }
+        }
+      }
+    }
+  }
+}

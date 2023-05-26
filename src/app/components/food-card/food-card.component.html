@@ -1,0 +1,41 @@
+<ul>
+  <li *ngFor="let food of foods">
+    <a>
+      <img src="{{ food.imageUrl }}" alt="" />
+      <div class="content">
+        <div class="title">
+          {{ food.name }}
+          <span class="{{ food.favorite ? 'favorite' : 'not' }}">
+            <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+          </span>
+        </div>
+        <ngb-rating
+          [rate]="food.stars"
+          [max]="5"
+          [readonly]="true"
+        >
+          <ng-template let-fill="fill" let-index="index">
+            <i class="fa-sharp fa-star {{fill === 100 ? 'fa-solid' : 'fa-regular'}}"></i>
+          </ng-template>
+        </ngb-rating>
+        <div class="product-item-footer">
+          <div class="origins">
+            <fa-icon [icon]="['fas', 'globe']"></fa-icon>
+            <span *ngFor="let origin of food.origins">
+              {{ origin }}
+            </span>
+          </div>
+          <div class="cook-time">
+            <span>🕑</span>
+            {{ food.cookTime }}
+          </div>
+        </div>
+        <div class="price">
+          <span>
+            {{ food.price | currency : 'BRL' }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

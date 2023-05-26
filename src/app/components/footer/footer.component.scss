@@ -1,0 +1,11 @@
+@import '../../../assets/variables';
+
+footer {
+  width: 100%;
+  text-align: center;
+
+  p {
+    color: $gray;
+    font-size: 12px;
+  }
+}

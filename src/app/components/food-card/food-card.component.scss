@@ -1,0 +1,82 @@
+@import '../../../assets/variables';
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+
+  li {
+    a {
+      min-height: 40rem;
+      width: 32rem;
+      border: 1px solid $light-gray;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin: 2.5rem;
+      transition: all 0.3s;
+
+      div.content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+
+        .title {
+          color: $black;
+          width: 100%;
+          font-size: 20px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          span.favorite {
+            color: $red;
+          }
+
+          span.not {
+            opacity: .2;
+          }
+        }
+
+        .favorite {
+          font-size: 20px;
+        }
+
+        .product-item-footer {
+          width: 100%;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          color: $gray;
+        }
+
+        .price {
+          color: $black;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  li a:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    border-color: $gray;
+    transform: scale(1.05);
+  }
+}
+
+i {
+  font-size: 20px;
+  padding-right: 0.1rem;
+  color: #f3f317;
+}
