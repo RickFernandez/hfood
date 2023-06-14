@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FoodService } from '../../services/food/food.service';
 import { IFood } from 'src/app/shared/models/Food';
 
@@ -8,13 +8,14 @@ import { IFood } from 'src/app/shared/models/Food';
   styleUrls: ['./food-card.component.scss']
 })
 export class FoodCardComponent {
-  [x: string]: any;
-  foods!: IFood[];
+  @Input() foods!: IFood[];
 
-  constructor(private _foodService$: FoodService) {}
+  // constructor(private _foodService$: FoodService) {}
 
-  ngOnInit(): void {
-    this.foods = this._foodService$.getAll();
-  }
+  // ngOnInit(): void {
+  //   this.foods = this._foodService$.getAll();
+  // }
+
+  
 
 }

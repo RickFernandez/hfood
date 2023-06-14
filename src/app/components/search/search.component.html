@@ -1,0 +1,4 @@
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search Food" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm" (change)="onSearch()" (keyup)="onSearch()" />
+  <button class="btn btn-danger" type="submit" (click)="onSearch()">Search</button>
+</form>

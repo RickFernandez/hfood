@@ -15,7 +15,7 @@
           [readonly]="true"
         >
           <ng-template let-fill="fill" let-index="index">
-            <i class="fa-sharp fa-star {{fill === 100 ? 'fa-solid' : 'fa-regular'}}"></i>
+            <fa-icon [icon]="fill === 100 ? ['fas', 'star'] : ['far', 'star']"></fa-icon>
           </ng-template>
         </ngb-rating>
         <div class="product-item-footer">
