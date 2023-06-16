@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FoodService } from '../../services/food/food.service';
-import { IFood } from 'src/app/shared/models/Food';
+import { Food } from 'src/app/shared/models/Food';
 
 @Component({
   selector: 'app-food-card',
@@ -8,7 +8,7 @@ import { IFood } from 'src/app/shared/models/Food';
   styleUrls: ['./food-card.component.scss']
 })
 export class FoodCardComponent {
-  @Input() foods!: IFood[];
+  @Input() foods!: Food[];
 
   // constructor(private _foodService$: FoodService) {}
 

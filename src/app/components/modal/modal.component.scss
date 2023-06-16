@@ -1,0 +1,91 @@
+@import '../../../assets/variables';
+
+.container {
+  padding: 0;
+  height: 70rem;
+  position: relative;
+
+  .modal-header {
+    width: 100%;
+    height: 10%;
+    border: none;
+    background: $red;
+    align-items: center;
+    justify-content: center;
+    padding-block: 3rem;
+    
+    h4 {
+      color: $white;
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+  }
+
+  .f-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .modal-body {
+    padding: 0;
+    height: 70%;
+    justify-content: flex-start;
+
+    .nav-tabs {
+      width: 100%;
+
+      li {
+        width: 50%;
+        
+        button {
+          color: $alpha-red;
+          width: 100%;
+          font-size: 16px;
+          font-weight: 600;
+          text-align: center;
+          padding-block: 1rem;
+        }
+
+        button.active {
+          color: $gray;
+        }
+
+      }
+
+    }
+
+    .tab-content {
+      width: 100%;
+      padding: 5rem 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .modal-footer {
+    height: 20%;
+    border: none;
+    padding-bottom: 3rem;
+
+    p:first-child {
+      color: $black;
+      font-size: 18px;
+    }
+
+    p:nth-child(2) {
+      color: $gray;
+      font-size: 14px;
+    }
+
+    a {
+      color: $red;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+}

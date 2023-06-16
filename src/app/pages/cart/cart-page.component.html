@@ -1,0 +1,48 @@
+<div class="container">
+  <ul *ngIf="cart && cart.items.length > 0; else cartEmpty">
+    <li *ngFor="let cartItem of cart.items">
+      <div>
+        <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+      </div>
+      <div>
+        <a routerLink="/food/{{ cartItem.food.id }}">
+          {{ cartItem.food.name }}
+        </a>
+      </div>
+      <div>
+        <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+      </div>
+      <div>
+        {{ cartItem.price | currency : 'BRL' }}
+      </div>
+      <div>
+        <button class="remove-button" (click)="removeFromCart(cartItem)">
+          <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+          Remover
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #cartEmpty>
+    <div class="empty-cart">
+      <p>Parece que ainda não há nada no seu carrinho... Volte a tela de <a routerLink="/">início</a> e escolha algo delicioso para comer! =)</p>
+    </div>
+  </ng-template>
+  
+  <div class="checkout">
+    <div class="header">
+      <h2>Total</h2>
+    </div>
+    <div>
+      <div class="foods-count">{{ cart.items.length }}</div>
+      <div class="total-price">{{ cart.totalPrice | currency : 'BRL' }}</div>
+    </div>
+  </div>
+</div>

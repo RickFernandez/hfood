@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ title }}
+    </h4>
+  </div>
+  <div class="f-container modal-body">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <button ngbNavLink>
+          Buscar por CEP
+        </button>
+        <ng-template ngbNavContent>
+          <app-search [placeholder]="'Insira o CEP'" [searchType]="'searchLocationZip'"></app-search>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <button ngbNavLink>
+          Buscar por Endereço
+        </button>
+        <ng-template ngbNavContent>
+          <app-search [placeholder]="'Insira o CEP'" [searchType]="'searchLocationAddress'"></app-search>
+        </ng-template>
+      </li>
+    </ul>
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    
+    <!-- <app-search [placeholder]="'Busque por um endereço ou CEP'"></app-search> -->
+    <div>
+      content
+    </div>
+  </div>
+  <div class="f-container modal-footer">
+    <p>Já tem um endereço salvo?</p>
+    <p>Entre na sua conta para selecionar seu endereço.</p>
+    <a>Entrar ou cadastrar</a>
+  </div>
+</div>

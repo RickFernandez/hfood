@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+
+  @Input() placeholder!: string;
+  @Input() searchType!: string;
 
   searchTerm: string = "";
 
@@ -22,10 +25,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  async onSearch() {
-    if (this.searchTerm) {
-      this._router.navigateByUrl('/search/' + this.searchTerm);
-    }
+  onSearchFood() {
+    this.searchTerm ? this._router.navigateByUrl('/search/' + this.searchTerm) : this._router.navigateByUrl('/');
+  }
+
+  onSearchLocation() {
+    
   }
 
 }

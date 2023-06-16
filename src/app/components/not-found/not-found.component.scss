@@ -1,0 +1,27 @@
+@import '../../../assets/variables';
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 100;
+  font-size: 20px;
+  height: 20vh;
+
+  a {
+    opacity: .8;
+    margin: 1rem;
+    color: $white;
+    font-size: 16px;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+    text-decoration: none;
+    background-color: $red;
+  }
+
+  a:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}

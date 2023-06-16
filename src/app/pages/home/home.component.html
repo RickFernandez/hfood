@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column align-items-center">
-  <app-search></app-search>
   <app-tags></app-tags>
-  <app-food-card [foods]="foods" ></app-food-card>
+  <app-food-card [foods]="foods"></app-food-card>
+  <app-not-found [visible]="!foods || foods.length <= 0"></app-not-found>
 </div>

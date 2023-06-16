@@ -1,0 +1,64 @@
+<app-not-found [visible]="!food" notFoundMessage="Produto não encontrado. Não se preocupe que já estamos resolvendo isso! =)" resetLinkText="Voltar ao Início"></app-not-found>
+
+<div *ngIf="food" class="container">
+  <img [src]="food.imageUrl" [alt]="food.name">
+  <div class="details">
+    <div class="header">
+      <span class="name">{{ food.name }}</span>
+      <span class="{{ food.favorite ? 'favorite' : 'not' }}">
+        <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+      </span>
+    </div>
+    <div class="rating">
+      <ngb-rating
+          [rate]="food.stars"
+          [max]="5"
+          [readonly]="true"
+        >
+          <ng-template let-fill="fill" let-index="index">
+            <fa-icon [icon]="fill === 100 ? ['fas', 'star'] : ['far', 'star']"></fa-icon>
+          </ng-template>
+        </ngb-rating>
+    </div>
+    <div class="product-item-footer">
+      <div class="origins">
+        <span *ngFor="let origin of food.origins">
+          {{ origin }}
+        </span>
+      </div>
+      <div class="tags">
+        <app-tags [foodPageTags]="food.tags" [justifyContent]="'flex-start'"></app-tags>
+      </div>
+      <div class="cook-time">
+        <span>
+          O tempo para fazer este prato é de aproximadamente <strong>{{ food.cookTime }}</strong> minutos
+        </span>
+      </div>
+    </div>
+    <div class="price">
+      <span>
+        {{ food.price | currency : 'BRL' }}
+      </span>
+    </div>
+    <div class="buttons">
+      <div class="quantity">
+        <button (click)="onRemoveItem()">
+          <fa-icon [icon]="['fas', 'minus']"></fa-icon>
+        </button>
+        <span>{{ totalItems }}</span>
+        <button (click)="onAddItem()">
+          <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+        </button>
+        <span>Total:
+          <br/>
+          {{ totalPrice | currency : 'BRL' }}</span>
+      </div>
+      <div class="add-bag" (click)="addToCart()">
+        <button class="btn btn-red btn-animate">
+          <fa-icon [icon]="['fas', 'bag-shopping']"></fa-icon>
+          Adicionar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

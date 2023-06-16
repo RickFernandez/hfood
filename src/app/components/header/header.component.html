@@ -3,20 +3,29 @@
     <a href="#" routerLink="/" class="logo">
       <img src="../../../assets/images/hfood-logo.svg" alt="">
     </a>
+    <div>
+      <app-search [placeholder]="'Ta com vontade de comer o que hoje?'" [searchType]="'searchFood'" ></app-search>
+    </div>
     <nav>
       <ul>
         <li>
-          <a href="" class="login">
-            <i class="fa-solid fa-user"></i>
-            Login
+          <button class="location" (click)="openLg(content)">
+            <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
+            Escolha um local de entrega...
+          </button>
+        </li>
+        <li>
+          <a class="login">
+            <fa-icon [icon]="['fas', 'user']"></fa-icon>
+            Entrar
           </a>
         </li>
         <li>
-          <a href="#" routerLink="/cart-page" class="cart">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <a routerLink="/cart" class="cart" ngClass="{{cartTotalPrice > 0 && cartTotalItems > 0 ? 'have-item' : ''}}">
+            <fa-icon [icon]="['fas', 'bag-shopping']"></fa-icon>
             <p>
-              <span>R$ 0,00</span>
-              <span>0 itens</span>
+              <span>{{ cartTotalPrice | currency : 'BRL' }}</span>
+              <span>{{ cartTotalItems }} itens</span>
             </p>
           </a>
         </li>
@@ -24,3 +33,7 @@
     </nav>
   </div>
 </header>
+
+<ng-template #content let-modal>
+  <app-modal [title]="'Onde você quer receber o seu pedido?'" [modal]="modal" ></app-modal>
+</ng-template>

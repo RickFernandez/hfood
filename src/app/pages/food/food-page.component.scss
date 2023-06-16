@@ -1,0 +1,207 @@
+@import '../../../assets/variables';
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    flex: 1 0;
+    margin: 2rem;
+    height: 40rem;
+    object-fit: cover;
+    border-radius: 3rem;
+  }
+
+  .details {
+    width: 100%;
+    padding: 2rem;
+    margin-left: 1rem;
+    border-radius: 3rem;
+    display: flex;
+    flex: 1 0;
+    gap: 1.5rem;
+    flex-direction: column;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        font-size: 3rem;
+      }
+
+      .name {
+        font-weight: bolder;
+      }
+
+      .favorite {
+        color: $red;
+      }
+
+      .not {
+        opacity: 0.2;
+      }
+    }
+
+    .rating {
+      font-size: 1.6rem;
+      color: $rating-star;
+    }
+
+    .product-item-footer {
+      display: flex;
+      flex-direction: column;
+
+      .origins {
+        color: $gray;
+        font-size: 1.4rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+        span {
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          background-color: $light-gray;
+        }
+      }
+
+      .tags {
+        width: 100%;
+        align-self: flex-start;
+      }
+
+      .cook-time {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+
+        strong {
+          color: $red;
+        }
+      }
+    }
+
+    .price {
+      color: $green;
+      font-size: 1.8rem;
+    }
+
+    .price::before {
+      color: $gray;
+      content: 'Preço: ';
+      font-size: 1.2rem;
+      vertical-align: top;
+    }
+
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+
+      .quantity,
+      .add-bag {
+        width: 50%;
+        height: 5rem;
+        
+        button {
+          color: $red;
+          font-size: 1.6rem;
+          border-radius: 50px;
+          transition: all 0.3s;
+        }
+      }
+
+      .quantity {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: flex-start;
+
+        button {
+          width: 5rem;
+          height: 100%;
+          border: 1px solid $red;
+          background-color: $white;
+        }
+
+        button:hover {
+          color: $white;
+          background-color: $red;
+        }
+
+        span {
+          color: $gray;
+          font-size: 1.4rem;
+        }
+      }
+
+      .add-bag {
+        button {
+          width: 100%;
+          height: 100%;
+          border: none;
+          color: $white;
+          position: relative;
+          background-color: $red;
+          animation-fill-mode: backwards;
+          animation: moveInBottom .5s ease-out;
+
+          fa-icon {
+            margin-right: 1rem;
+          }
+        }
+
+        button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+          transform: translateY(-1px);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          display: inline-block;
+          background-color: $red;
+          border-radius: 100px;
+          transition: all 0.4s;
+        }
+
+        button:hover::after {
+          opacity: 0;
+          transform: scaleX(1.4) scaleY(1.5);
+        }
+      }
+    }
+  }
+}
+
+.container > * {
+  min-width: 35rem;
+  max-width: 56rem;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

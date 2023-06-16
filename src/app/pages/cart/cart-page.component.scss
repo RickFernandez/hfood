@@ -1,0 +1,170 @@
+@import '../../../assets/variables';
+
+.container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  
+  ul,
+  .empty-cart {
+    display: flex;
+    flex: 3 0;
+    list-style: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid $pink;
+    border-radius: 1rem;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      border-bottom: 1px solid $light-gray;
+
+      div{
+        color: $gray;
+        padding: 1.5rem;
+        font-size: 14px;
+
+        img {
+          width: 8rem;
+          height: 8rem;
+          object-fit: cover;
+          border-radius: 100px;
+        }
+
+        a {
+          color: $black;
+          font-size: 18px;
+          text-decoration: none;
+        }
+
+        select {
+          width: 5rem;
+          border: none;
+          outline: none;
+          font-weight: 100;
+          border-bottom: 1px solid $light-gray;
+        }
+
+        select:hover,
+        select > option:hover {
+          cursor: pointer;
+        }
+
+        button {
+          color: $red;
+          border: none;
+          font-size: 12px;
+          padding: .8rem 1rem;
+          border-radius: 1rem;
+          display: flex;
+          gap: .5rem;
+          align-items: center;
+          transition: all .3s;
+          background: none;
+        }
+
+        button:hover {
+          background: $light-gray;
+        }
+      }
+
+      div:not(:first-child) {
+        flex-basis: 18%;
+      }
+    }
+
+    li:last-child {
+      border: none;
+    }
+  }
+
+  .empty-cart {
+    height: 100%;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+
+    p {
+      margin: 0;
+
+      a {
+        color: $black;
+        padding: .5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        background-color: $light-gray;
+        transition: all .3s;
+      }
+
+      a:hover {
+        color: $white;
+        background-color: $red;
+      }
+    }
+  }
+
+  .checkout {
+    width: 100%;
+    display: flex;
+    flex: 1 3;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $pink;
+    border-radius: 1rem;
+
+    .header {
+      height: 20%;
+      width: 100%;
+      background: $red;
+      border-top-left-radius: calc(1rem - 1px);
+      border-top-right-radius: calc(1rem - 1px);
+
+      h2 {
+        color: $white;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    div {
+      font-size: 18px;
+      display: flex;
+      gap: 1.5rem;
+      flex: 3;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem 1rem;
+      
+      .foods-count,
+      .total-price {
+        gap: .5rem;
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .foods-count::before {
+        content: 'Itens totais: ';
+      }
+
+      .total-price::before {
+        content: 'Preço total: ';
+
+      }
+      
+      .foods-count::before,
+      .total-price::before {
+        color: $gray;
+        font-size: 14px;
+      }
+    }
+  }
+}

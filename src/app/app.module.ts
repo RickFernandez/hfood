@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { FoodCardComponent } from './components/food-card/food-card.component';
 import { SearchComponent } from './components/search/search.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { FoodPageComponent } from './pages/food/food-page.component';
+import { CartPageComponent } from './pages/cart/cart-page.component';
+import { CartService } from './services/cart/cart.service';
+import { FoodService } from './services/food/food.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,11 @@ import { TagsComponent } from './components/tags/tags.component';
     HomeComponent,
     FoodCardComponent,
     SearchComponent,
-    TagsComponent
+    TagsComponent,
+    FoodPageComponent,
+    CartPageComponent,
+    NotFoundComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +47,4 @@ import { TagsComponent } from './components/tags/tags.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(library: FaIconLibrary) {
-    // library.addIcons(faGlobe, faHeart, farStar);
-  }
-}
+export class AppModule {}

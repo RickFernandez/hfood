@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FoodService } from 'src/app/services/food/food.service';
-import { IFood } from 'src/app/shared/models/Food';
+import { Food } from 'src/app/shared/models/Food';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { IFood } from 'src/app/shared/models/Food';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  foods!: IFood[];
+  foods!: Food[];
 
   constructor(private _foodService$: FoodService, private _route: ActivatedRoute) {}
 

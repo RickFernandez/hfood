@@ -1,4 +1,38 @@
-<form class="d-flex" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search Food" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm" (change)="onSearch()" (keyup)="onSearch()" />
-  <button class="btn btn-danger" type="submit" (click)="onSearch()">Search</button>
+<form *ngIf="searchType === 'searchFood'" class="d-flex food" role="search">
+  <input class="form-control me-2" type="search" placeholder="{{ placeholder }}" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm"  (keyup)="onSearchFood()" (search)="onSearchFood()"/>
+  <button class="btn" type="submit" (click)="onSearchFood()">
+    <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+  </button>
+</form>
+
+<form *ngIf="searchType === 'searchLocationZip'" class="d-flex zip" role="search">
+  <div class="input-group mb-3">
+    <button class="btn input-group-text" id="basic-addon2" type="submit" (click)="onSearchFood()">
+      <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+    </button>
+    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+</form>
+
+<form *ngIf="searchType === 'searchLocationAddress'" class="d-flex address" role="search">
+  <div class="row g-3">
+    <div class="col-12">
+      <p>Por favor, preencha todos os campos.</p>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="inputCity" placeholder="Cidade*">
+    </div>
+    <div class="col-md-6">
+      <select id="inputState" class="form-select">
+        <option selected disabled value="" class="selected">Estado*</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-8">
+      <input type="text" class="form-control" id="inputStreet" placeholder="Rua*">
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+  </div>
 </form>
