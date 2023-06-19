@@ -1,5 +1,5 @@
 export class Zip {
-    cep?: string;
+    cep!: string;
     logradouro!: string;
     complemento?: string;
     bairro!: string;

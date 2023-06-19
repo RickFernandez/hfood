@@ -10,7 +10,7 @@
     <button class="btn input-group-text" id="basic-addon2" type="submit" (click)="onSearchFood()">
       <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
     </button>
-    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Username" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Username" aria-describedby="basic-addon1" #zipInput (keyup)="onSearchZip(zipInput.value, zipInput)" maxlength="9" minlength="8">
   </div>
 </form>
 
