@@ -5,37 +5,22 @@
     </h4>
   </div>
   <div class="f-container modal-body">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-      <li [ngbNavItem]="1">
-        <button ngbNavLink>
-          Buscar por CEP
-        </button>
-        <ng-template ngbNavContent>
-          <app-search [placeholder]="'Insira o CEP'" [searchType]="'searchLocationZip'" (zipEntered)="onZipEntered($event)"></app-search>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="2">
-        <button ngbNavLink>
-          Buscar por Endereço
-        </button>
-        <ng-template ngbNavContent>
-          <app-search [placeholder]="'Insira o CEP'" [searchType]="'searchLocationAddress'" (click)="alertResponse()"></app-search>
-        </ng-template>
-      </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="mt-2 content"></div>
-    <div class="search-result" *ngIf="zipData">
-      <ul>
-        <li>
-          <button>
-            <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
-            <div class="btn-address">
-              <span class="address-zip">{{ zip.cep }}</span>
-              <span class="address-infos">{{ zip.logradouro }} - {{ zip.bairro }}, {{ zip.localidade }} - {{ zip.uf }}</span>
-            </div>
-          </button>
-        </li>
-      </ul>
+    <h4>Buscar por CEP</h4>
+    <app-search [searchType]="'searchLocationZip'" (zipEntered)="onZipEntered($event)"></app-search>
+    <div class="search-result">
+      <div class="search-result" *ngIf="locationData">
+        <ul>
+          <li>
+            <button>
+              <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
+              <div class="btn-address">
+                <span class="address-zip">{{ location.cep }}</span>
+                <span class="address-infos">{{ location.logradouro }} - {{ location.bairro }}, {{ location.localidade }} - {{ location.uf }}</span>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="f-container modal-footer">
@@ -44,5 +29,3 @@
     <a>Entrar ou cadastrar</a>
   </div>
 </div>
-
-<!-- <app-alert [staticAlertClosed]="staticAlertClosed" [alertMessage]="alertMessage" [alertType]="alertType"></app-alert> -->

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ZipService } from 'src/app/services/zip/zip.service';
-import { Zip } from 'src/app/shared/models/Zip';
+import { LocationService } from 'src/app/services/zip/location.service';
+import { Address } from 'src/app/shared/models/Address';
+import { Location } from 'src/app/shared/models/Location';
 
 @Component({
   selector: 'app-modal',
@@ -9,21 +10,11 @@ import { Zip } from 'src/app/shared/models/Zip';
 })
 export class ModalComponent {
 
-  zip: Zip = {
-    cep: '',
-    logradouro: '',
-    bairro: '',
-    localidade: '',
-    uf: '',
-  };
+  location!: Location;
 
-  zipData: boolean = false;
+  locationData: boolean = false;
 
-  staticAlertClosed: boolean = false;
-  alertMessage: string = '';
-  alertType: string = '';
-
-  constructor(private _zipService$: ZipService) { }
+  constructor(private _locationpService$: LocationService) { }
 
   ngOnInit(): void {
   }
@@ -32,25 +23,31 @@ export class ModalComponent {
   @Input() modal!: any;
   active = 1;
 
-  alertResponse() {
-    this.staticAlertClosed = true;
-    this.alertMessage = 'Sucesso!';
-    this.alertType = 'success';
-  }
-
   onZipEntered(zip: string) {
-    this.searchZip(zip);
+    this.searchByZip(zip);
   }
 
-  searchZip(zip: string): Zip {
-    this._zipService$.searchByZip(zip).subscribe(
-      ((address: Zip) => {
-        this.zip = address;
-      })
-    );
-    if (this.zip.cep != '' && this.zip.logradouro != '' && this.zip.bairro != '' && this.zip.uf != '') {
-      this.zipData = !this.zipData
+  searchByZip(zip: string): Location {
+    if (zip.length <= 7) {
+      this.locationData = false;
+      return this.location = {
+        cep: '',
+        logradouro: '',
+        bairro: '',
+        localidade: '',
+        uf: '',
+      }
     }
-    return this.zip;
+    else {
+      this._locationpService$.searchByZip(zip).subscribe(
+        ((location: Location) => {
+          return this.location = location;
+        })
+      );
+      if (this.location.cep != '' && this.location.logradouro != '' && this.location.bairro != '' && this.location.uf != '') {
+        this.locationData = !this.locationData
+      }
+    }
+    return this.location;
   }
 }

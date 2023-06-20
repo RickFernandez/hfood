@@ -11,12 +11,12 @@
     </div>
     <div class="rating">
       <ngb-rating
-          [rate]="food.stars"
-          [max]="5"
-          [readonly]="true"
+      [rate]="food.stars"
+      [readonly]="true"
+      [max]="5"
         >
           <ng-template let-fill="fill" let-index="index">
-            <fa-icon [icon]="fill === 100 ? ['fas', 'star'] : ['far', 'star']"></fa-icon>
+            <fa-icon [icon]="fill === 100 ? ['fas', 'star'] : ['far', 'star']" [style.width.%]="fill"></fa-icon>
           </ng-template>
         </ngb-rating>
     </div>

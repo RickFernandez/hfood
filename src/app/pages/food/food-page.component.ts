@@ -28,7 +28,7 @@ export class FoodPageComponent {
   }
 
   onAddItem(): void {
-    this.totalItems = this.totalItems + 1;
+    this.totalItems < 10 ? this.totalItems = this.totalItems + 1 : this.totalItems = 10;
     this.getTotalPrice(this.totalItems, this.food.price);
   }
 
@@ -42,7 +42,7 @@ export class FoodPageComponent {
   }
 
   addToCart(): void {
-    this._cartService$.addToCart(this.food);
+    this._cartService$.addToCart(this.food, this.totalItems);
     this._router.navigateByUrl('/cart');
   }
 }

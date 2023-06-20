@@ -11,8 +11,6 @@ import { CartItem } from 'src/app/shared/models/CartItem';
 })
 export class CartPageComponent {
 
-  @Output()
-
   cart!: Cart;
 
   constructor(private _cartService$: CartService) {

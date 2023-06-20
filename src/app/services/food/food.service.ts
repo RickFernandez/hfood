@@ -18,7 +18,7 @@ export class FoodService {
         price: 10,
         favorite: false,
         origins: ['Itália'],
-        stars: 4.5,
+        stars: 1,
         imageUrl: '/assets/images/foods/food-1.jpg',
         tags: ['FastFood', 'Pizza', 'Lanche'],
       },
@@ -29,7 +29,7 @@ export class FoodService {
         cookTime: '20-30',
         favorite: true,
         origins: ['Pérsia', 'Oriente Médio', 'China'],
-        stars: 4.7,
+        stars: 2,
         imageUrl: '/assets/images/foods/food-2.jpg',
         tags: ['SlowFood', 'Almoço'],
       },
@@ -51,7 +51,7 @@ export class FoodService {
         cookTime: '15-20',
         favorite: true,
         origins: ['Bélgica', 'França'],
-        stars: 3.3,
+        stars: 4,
         imageUrl: '/assets/images/foods/food-4.jpg',
         tags: ['FastFood', 'Fritos'],
       },
@@ -62,7 +62,7 @@ export class FoodService {
         cookTime: '40-50',
         favorite: false,
         origins: ['Índia', 'Ásia'],
-        stars: 3.0,
+        stars: 5,
         imageUrl: '/assets/images/foods/food-5.jpg',
         tags: ['SlowFood', 'Sopa'],
       },
@@ -73,7 +73,7 @@ export class FoodService {
         cookTime: '40-50',
         favorite: false,
         origins: ['Itália'],
-        stars: 4.0,
+        stars: 4.5,
         imageUrl: '/assets/images/foods/food-6.jpg',
         tags: ['FastFood', 'Pizza', 'Lanche'],
       }
@@ -85,7 +85,7 @@ export class FoodService {
       { name: "All", count: 6 },
       { name: "FastFood", count: 4 },
       { name: "Pizza", count: 2 },
-      { name: "Lanche", count: 3 },
+      { name: "Lanche", count: 2 },
       { name: "SlowFood", count: 2 },
       { name: "Hamburger", count: 1 },
       { name: "Fritos", count: 1 },
@@ -105,4 +105,28 @@ export class FoodService {
     return this.getAll().find(food => food.id == id)!;
   };
 
+  getFoodByFavorite(): Food[] {
+    return this.getAll().filter(food => food.favorite);
+  }
+
+  getFoodByMinRating(minRating: number): Food[] {
+    return this.getAll().filter(food => food.stars >= minRating);
+  }
+  
+  orderByPriceAscending(): Food[] {
+    return this.getAll().sort((a, b) => a.price - b.price);
+  }
+  
+  orderByPriceDescending(): Food[] {
+    return this.getAll().sort((a, b) => b.price - a.price);
+  }
+  
+  orderByRateAscending(): Food[] {
+    return this.getAll().sort((a, b) => a.stars - b.stars);
+  }
+  
+  orderByRateDescending(): Food[] {
+    return this.getAll().sort((a, b) => b.stars - a.stars);
+  }
+  
 }

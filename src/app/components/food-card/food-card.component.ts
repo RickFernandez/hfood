@@ -10,12 +10,4 @@ import { Food } from 'src/app/shared/models/Food';
 export class FoodCardComponent {
   @Input() foods!: Food[];
 
-  // constructor(private _foodService$: FoodService) {}
-
-  // ngOnInit(): void {
-  //   this.foods = this._foodService$.getAll();
-  // }
-
-  
-
 }

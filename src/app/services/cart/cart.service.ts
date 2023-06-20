@@ -14,19 +14,23 @@ export class CartService {
   constructor(private _cart: Cart) { }
 
 
-  addToCart(food: Food): void {
+  addToCart(food: Food, totalQuantity: number): void {
+    console.log("totalQuantity " + totalQuantity);
+    
     let cartItem = this._cart.items.find(item => {
       return item.food.id === food.id;
     });
     if (cartItem) {
-      this.changeQuantity(food.id, cartItem.quantity + 1);
+      this.changeQuantity(food.id, cartItem.quantity + totalQuantity);
       return;
     }
-    this._cart.items.push(new CartItem(food));
+    this._cart.items.push(new CartItem(food, totalQuantity));
     this.cartSubject.next();
   }
 
   changeQuantity(foodId: number, quantity: number): void {
+    console.log(foodId, quantity);
+    
     let cartItem = this._cart.items.find(item => {
       return item.food.id === foodId;
     });

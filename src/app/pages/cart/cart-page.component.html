@@ -11,11 +11,16 @@
       </div>
       <div>
         <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1" [selected]="cartItem.quantity == 1" >1</option>
+            <option value="2" [selected]="cartItem.quantity == 2" >2</option>
+            <option value="3" [selected]="cartItem.quantity == 3" >3</option>
+            <option value="4" [selected]="cartItem.quantity == 4" >4</option>
+            <option value="5" [selected]="cartItem.quantity == 5" >5</option>
+            <option value="6" [selected]="cartItem.quantity == 6" >6</option>
+            <option value="7" [selected]="cartItem.quantity == 7" >7</option>
+            <option value="8" [selected]="cartItem.quantity == 8" >8</option>
+            <option value="9" [selected]="cartItem.quantity == 9" >9</option>
+            <option value="10" [selected]="cartItem.quantity == 10" >10</option>
         </select>
       </div>
       <div>

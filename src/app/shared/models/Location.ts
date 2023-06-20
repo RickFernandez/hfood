@@ -1,4 +1,5 @@
-export class Zip {
+export class Location {
+    [x: string]: any;
     cep!: string;
     logradouro!: string;
     complemento?: string;

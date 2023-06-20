@@ -25,5 +25,38 @@ export class HomeComponent implements OnInit {
         this.foods = this._foodService$.getAll();
       }
     });
+
+    console.log(this.getByFavorite());
+    console.log(this.getByMinRate());
+    console.log(this.getByPriceAsc());
+    console.log(this.getByPriceDsc());
+    console.log(this.getByRateAsc());
+    console.log(this.getByRateDsc());
+    
   }
+
+  getByFavorite(): Food[] {
+    return this._foodService$.getFoodByFavorite();
+  }
+
+  getByMinRate(): Food[] {
+    return this._foodService$.getFoodByMinRating(2);
+  }
+
+  getByPriceAsc(): Food[] {
+    return this._foodService$.orderByPriceAscending();
+  }
+
+  getByPriceDsc(): Food[] {
+    return this._foodService$.orderByPriceDescending();
+  }
+  
+  getByRateAsc(): Food[] {
+    return this._foodService$.orderByRateAscending();
+  }
+  
+  getByRateDsc(): Food[] {
+    return this._foodService$.orderByRateDescending();
+  }
+  
 }
