@@ -1,4 +1,5 @@
 <div class="container d-flex flex-column align-items-center">
+  <app-filter (filterApplied)="applyFilter($event)" ></app-filter>
   <app-tags></app-tags>
   <app-food-card [foods]="foods"></app-food-card>
   <app-not-found [visible]="!foods || foods.length <= 0"></app-not-found>

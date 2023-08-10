@@ -10,6 +10,7 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class HomeComponent implements OnInit {
   foods!: Food[];
+  filterBy: string = '';
 
   constructor(private _foodService$: FoodService, private _route: ActivatedRoute) {}
 
@@ -25,38 +26,52 @@ export class HomeComponent implements OnInit {
         this.foods = this._foodService$.getAll();
       }
     });
-
-    console.log(this.getByFavorite());
-    console.log(this.getByMinRate());
-    console.log(this.getByPriceAsc());
-    console.log(this.getByPriceDsc());
-    console.log(this.getByRateAsc());
-    console.log(this.getByRateDsc());
-    
   }
 
-  getByFavorite(): Food[] {
-    return this._foodService$.getFoodByFavorite();
+  ngOnChanges() {
+    console.log(this.filterBy);
   }
 
-  getByMinRate(): Food[] {
-    return this._foodService$.getFoodByMinRating(2);
-  }
+  applyFilter(filter: string): void {
+    this.filterBy = filter;
 
-  getByPriceAsc(): Food[] {
-    return this._foodService$.orderByPriceAscending();
+    switch (filter) {
+      case 'all':
+        this.foods = this._foodService$.getAll();
+        break;
+      case 'favorite':
+        this.foods = this._foodService$.getFoodByFavorite();
+        break;
+      case 'priceDsc':
+        this.foods = this._foodService$.orderByPriceDescending();
+        break;
+      case 'priceAsc':
+        this.foods = this._foodService$.orderByPriceAscending();
+        break;
+      case 'rateDsc':
+        this.foods = this._foodService$.orderByRateDescending();
+        break;
+      case 'rateAsc':
+        this.foods = this._foodService$.orderByRateAscending();
+        break;
+      case '5':
+        this.foods = this._foodService$.getFoodByMinRating(5);
+        break;
+      case '4':
+        this.foods = this._foodService$.getFoodByMinRating(4);
+        break;
+      case '3':
+        this.foods = this._foodService$.getFoodByMinRating(3);
+        break;
+      case '2':
+        this.foods = this._foodService$.getFoodByMinRating(2);
+        break;
+      case '1':
+        this.foods = this._foodService$.getFoodByMinRating(1);
+        break;
+      default:
+        this.foods = this._foodService$.getAll();
+        break;
+    }
   }
-
-  getByPriceDsc(): Food[] {
-    return this._foodService$.orderByPriceDescending();
-  }
-  
-  getByRateAsc(): Food[] {
-    return this._foodService$.orderByRateAscending();
-  }
-  
-  getByRateDsc(): Food[] {
-    return this._foodService$.orderByRateDescending();
-  }
-  
 }

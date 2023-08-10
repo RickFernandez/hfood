@@ -22,6 +22,7 @@ import { FoodService } from './services/food/food.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AlertComponent } from './components/alert/alert.component';
     CartPageComponent,
     NotFoundComponent,
     ModalComponent,
-    AlertComponent
+    AlertComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

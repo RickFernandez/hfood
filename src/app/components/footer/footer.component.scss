@@ -3,9 +3,11 @@
 footer {
   width: 100%;
   text-align: center;
+  padding-block: 10px;
 
-  p {
+  a {
     color: $gray;
     font-size: 12px;
+    text-decoration: none;
   }
 }

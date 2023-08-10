@@ -1,0 +1,24 @@
+@import '../../../assets/variables';
+
+div {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+
+  label {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  select {
+    font-size: 14px;
+    border-color: $gray;
+    padding-inline: 5px 15px;
+
+    option,
+    optgroup {
+      font-size: 16px;
+    }
+  }
+}

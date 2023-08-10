@@ -1,0 +1,19 @@
+<div>
+  <label for="filter">Filtrar por:</label>
+  <select name="filter" id="filter" (change)="applyFilter($any($event.target).value)">
+    <option selected disabled>Escolher filtro...</option>
+    <option value="all">Todos</option>
+    <option value="favorite">Favorito</option>
+    <option value="priceDsc">Preço maior</option>
+    <option value="priceAsc">Preço menor</option>
+    <option value="rateDsc">Maior avaliação</option>
+    <option value="rateAsc">Menor avaliação</option>
+    <optgroup label="Avaliação mínima de:">
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </optgroup>
+  </select>
+</div>
