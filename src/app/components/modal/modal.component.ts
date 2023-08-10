@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LocationService } from 'src/app/services/zip/location.service';
 import { Address } from 'src/app/shared/models/Address';
 import { Location } from 'src/app/shared/models/Location';
@@ -14,7 +14,7 @@ export class ModalComponent {
 
   locationData: boolean = false;
 
-  constructor(private _locationpService$: LocationService) { }
+  constructor(private _locationService$: LocationService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +22,9 @@ export class ModalComponent {
   @Input() title!: string;
   @Input() modal!: any;
   active = 1;
+
+  @Output() locationSelected = new EventEmitter<string>();
+  @Output() modalHidden =  new EventEmitter<boolean>();
 
   onZipEntered(zip: string) {
     this.searchByZip(zip);
@@ -39,7 +42,7 @@ export class ModalComponent {
       }
     }
     else {
-      this._locationpService$.searchByZip(zip).subscribe(
+      this._locationService$.searchByZip(zip).subscribe(
         ((location: Location) => {
           return this.location = location;
         })
@@ -49,5 +52,25 @@ export class ModalComponent {
       }
     }
     return this.location;
+  }
+
+  getLocation(location: any): void {
+    if (location) {
+      if (location.target.srcElement == 'div' || location.target.srcElement == 'span') {
+        if (location.target.className = 'btn-address') {
+          location.target.firstChild.className = 'address-zip' ? this.locationSelected.emit(location.target.firstChild.innerText) : this.locationSelected.emit('');
+        }
+      }
+      else {
+        let zipValue;
+        zipValue = document.querySelector('.address-zip');
+        console.log(zipValue!.innerHTML);
+        this.locationSelected.emit(zipValue!.innerHTML);
+        console.log(this.locationSelected);
+        
+      }
+    }
+    this.modalHidden.emit(true);
+    console.log(this.modalHidden);
   }
 }

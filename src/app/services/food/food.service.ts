@@ -82,7 +82,7 @@ export class FoodService {
 
   getAllTags(): Tag[] {
     return [
-      { name: "All", count: 6 },
+      { name: "Todos", count: 6 },
       { name: "FastFood", count: 4 },
       { name: "Pizza", count: 2 },
       { name: "Lanche", count: 2 },
@@ -94,7 +94,7 @@ export class FoodService {
   };
 
   getAllFoodBytag(tag: string): Food[] {
-    return tag == "All" ? this.getAll() : this.getAll().filter(food => food.tags.includes(tag));
+    return tag == "Todos" ? this.getAll() : this.getAll().filter(food => food.tags.includes(tag));
   };
 
   getAllFoodBySearchTerm(searchTerm: string): Food[] {

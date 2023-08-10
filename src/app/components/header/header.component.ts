@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
   cartTotalPrice = 0;
   private cartSubscription!: Subscription;
 
+  locationSelected!: string;
+  modalHidden!: boolean;
+
   constructor(private _cartService$: CartService, private _modalService$: NgbModal) {}
 
   ngOnInit(): void {
@@ -39,4 +42,16 @@ export class HeaderComponent implements OnInit {
 		this._modalService$.open(content, { centered: true, size: 'lg' });
     // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
+
+  getModalLocation(location: string) {
+    if (location) {
+      this.locationSelected = location;
+    }
+  }
+
+  getModalHidden(hidden: boolean) {
+    if (hidden === true) {
+      this._modalService$.dismissAll();
+    }
+  }
 }

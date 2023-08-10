@@ -4,12 +4,12 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Address } from 'src/app/shared/models/Address';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
+  deliveryLocation!: string;
   
   constructor(private _http: HttpClient) { }
   
@@ -33,5 +33,13 @@ export class LocationService {
   errorHandler(error: any): Observable<any> {
     console.log(error);
     return EMPTY;
+  }
+
+  getDeliveryLocation(zip: string): string {
+    return this.deliveryLocation = zip;
+  }
+
+  shareDeliveryLocation() {
+    return this.deliveryLocation;
   }
 }

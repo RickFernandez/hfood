@@ -9,9 +9,13 @@
     <nav>
       <ul>
         <li>
-          <button class="location" (click)="openLg(content)">
+          <button class="location" (click)="openLg(content)" *ngIf="!locationSelected">
             <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
             Escolha um local de entrega...
+          </button>
+          <button class="location" *ngIf="locationSelected">
+            <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
+            Entregar em: {{ locationSelected }}
           </button>
         </li>
         <li>
@@ -35,5 +39,5 @@
 </header>
 
 <ng-template #content let-modal>
-  <app-modal [title]="'Onde você quer receber o seu pedido?'" [modal]="modal" ></app-modal>
+  <app-modal [title]="'Onde você quer receber o seu pedido?'" [modal]="modal" (locationSelected)="getModalLocation($event)" (modalHidden)="getModalHidden($event)"></app-modal>
 </ng-template>

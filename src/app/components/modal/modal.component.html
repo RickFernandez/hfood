@@ -11,7 +11,7 @@
       <div class="search-result" *ngIf="locationData">
         <ul>
           <li>
-            <button>
+            <button (click)="getLocation($event)">
               <fa-icon [icon]="['fas', 'location-dot']"></fa-icon>
               <div class="btn-address">
                 <span class="address-zip">{{ location.cep }}</span>
